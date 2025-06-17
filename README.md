@@ -95,7 +95,7 @@ This will build the project and install it on your connected device or emulator
 ## Screenshots
 
 ### Login Page
-![LoginPage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147726.png)
+![LoginPage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147722.png)
 
 ### Register Page
 ![RegisterPage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750148049.png)
