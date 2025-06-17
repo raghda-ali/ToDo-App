@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/constants/routers_names.dart';
 import 'package:todo_app/core/widgets/custom_elevated_button.dart';
-import 'package:todo_app/core/widgets/custom_text_field.dart';
 import 'package:todo_app/features/auth/presentation/provider/authentication_provider.dart';
 import 'package:todo_app/features/auth/presentation/widgets/custom_email_field.dart';
 import 'package:todo_app/features/auth/presentation/widgets/custom_password_field.dart';

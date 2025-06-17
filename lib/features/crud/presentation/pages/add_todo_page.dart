@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/widgets/custom_elevated_button.dart';
 import 'package:todo_app/features/crud/data/model/todo_model.dart';
-import 'package:todo_app/features/crud/domain/entities/todo_entity.dart';
 import 'package:todo_app/features/crud/presentation/widgets/todo_form_widget.dart';
 import '../provider/todos_provider.dart';
 

@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:todo_app/features/crud/data/model/todo_model.dart'
-    show TodoModel;
-import 'package:todo_app/features/crud/domain/entities/todo_entity.dart';
+import 'package:todo_app/features/crud/data/model/todo_model.dart';
 
 class TodoRemoteDataSource {
   final firebaseFirestore = FirebaseFirestore.instance.collection('todo');
