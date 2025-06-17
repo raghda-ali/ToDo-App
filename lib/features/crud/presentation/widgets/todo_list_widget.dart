@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/constants/routers_names.dart';
-import 'package:todo_app/features/crud/domain/entities/todo_entity.dart';
 import 'package:todo_app/features/crud/presentation/provider/todos_provider.dart';
 
 class TodoListWidget extends StatelessWidget {
