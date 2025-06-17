@@ -5,20 +5,32 @@ import 'package:todo_app/features/crud/presentation/provider/todos_provider.dart
 import 'package:todo_app/features/auth/presentation/provider/authentication_provider.dart';
 import 'package:todo_app/features/crud/presentation/widgets/todo_list_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final todosProvider = Provider.of<TodosProvider>(context, listen: false);
+      todosProvider.loadTodos();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final toDoProvider = Provider.of<TodosProvider>(context);
     final authProvider = Provider.of<AuthenticationProvider>(context);
-    final todos = toDoProvider.todos;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('To Do App'),
         backgroundColor: Colors.white,
-        elevation:1,
+        elevation: 1,
         automaticallyImplyLeading: false,
         actionsPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         actions: [
@@ -42,7 +54,7 @@ class HomePage extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: TodoListWidget(todos: todos),
+      body: TodoListWidget(),
     );
   }
 }

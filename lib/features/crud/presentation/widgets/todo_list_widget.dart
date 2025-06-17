@@ -5,20 +5,18 @@ import 'package:todo_app/features/crud/domain/entities/todo_entity.dart';
 import 'package:todo_app/features/crud/presentation/provider/todos_provider.dart';
 
 class TodoListWidget extends StatelessWidget {
-  final List<TodoEntity> todos;
-
-  const TodoListWidget({super.key, required this.todos});
+  const TodoListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final toDoProvider = Provider.of<TodosProvider>(context);
-    if (toDoProvider.isLoading == true && !toDoProvider.isInitialized) {
+    if (toDoProvider.isLoading == true) {
       return const Center(
         child: CircularProgressIndicator(color: Colors.black),
       );
     }
 
-    if (todos.isEmpty) {
+    if (toDoProvider.todos.isEmpty) {
       return const Center(
         child: Text('List is Empty', style: TextStyle(fontSize: 17)),
       );
@@ -26,11 +24,11 @@ class TodoListWidget extends StatelessWidget {
 
     return ListView.separated(
       padding: const EdgeInsets.all(16),
-      itemCount: todos.length,
+      itemCount: toDoProvider.todos.length,
       physics: const BouncingScrollPhysics(),
       separatorBuilder: (_, __) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
-        final todo = todos[index];
+        final todo = toDoProvider.todos[index];
         return Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(

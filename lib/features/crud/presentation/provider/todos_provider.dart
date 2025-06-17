@@ -17,7 +17,6 @@ class TodosProvider extends ChangeNotifier {
   List<TodoEntity> get todos => _todos;
   bool isLoading = false;
   final TodoRepository todoRepository;
-  bool isInitialized = false;
   TextEditingController addTitleController = TextEditingController();
   TextEditingController addDescriptionController = TextEditingController();
   bool isAddLoading = false;
@@ -35,12 +34,14 @@ class TodosProvider extends ChangeNotifier {
   });
 
   void loadTodos() {
-    if (isLoading || isInitialized) return;
+    _todos.clear();
+    if (isLoading) return;
+
     isLoading = true;
     notifyListeners();
+
     todoRepository.readTodos().listen((todos) {
       _todos = todos;
-      isInitialized = true;
       isLoading = false;
       notifyListeners();
     });

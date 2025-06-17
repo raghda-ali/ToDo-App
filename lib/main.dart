@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +12,6 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupServiceLocator();
-  print(
-    "TodosProvider is registered: ${ServiceLocator.getIt.isRegistered<TodosProvider>()}",
-  );
-
   runApp(const MyApp());
 }
 
@@ -31,9 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       ChangeNotifierProvider<TodosProvider>(
         create: (_) {
-          final provider = ServiceLocator.getIt<TodosProvider>();
-          provider.loadTodos();
-          return provider;
+          return ServiceLocator.getIt<TodosProvider>();
         },
       ),
     ],
@@ -47,33 +40,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xFFf6f5ee),
         ),
         home: CheckAuth(),
-        // home: HomePage(),
       );
     },
   );
-  // @override
-  // Widget build(BuildContext context, WidgetRef ref) {
-  //   return ChangeNotifierProvider(
-  //     create: (context) => TodosProvider(),
-  //     child: MaterialApp.router(
-  //       routerConfig: ref.watch(goRouterProvider),
-  //       title: 'Flutter Demo',
-  //       debugShowCheckedModeBanner: false,
-  //       theme: ThemeData(
-  //         useMaterial3: true,
-  //         appBarTheme: AppBarTheme().copyWith(
-  //           backgroundColor: Colors.green,
-  //           centerTitle: true,
-  //         ),
-  //         bottomNavigationBarTheme: BottomNavigationBarThemeData().copyWith(
-  //           backgroundColor: Colors.green,
-  //           selectedItemColor: Colors.white,
-  //           unselectedItemColor: Colors.black,
-  //         ),
-  //         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-  //       ),
-  //       // home:Signup(),
-  //     ),
-  //   );
-  // }
 }
