@@ -16,6 +16,7 @@ class TodoRepositoryImpl implements TodoRepository {
         title: todo.title,
         description: todo.description,
         createdTime: todo.createdTime,
+        userId: todo.userId,
       ),
     );
   }
@@ -33,6 +34,7 @@ class TodoRepositoryImpl implements TodoRepository {
         title: todo.title,
         description: todo.description,
         createdTime: todo.createdTime,
+        userId: todo.userId,
       ),
     );
   }
@@ -45,6 +47,7 @@ class TodoRepositoryImpl implements TodoRepository {
         title: todo.title,
         description: todo.description,
         createdTime: todo.createdTime,
+        userId: todo.userId,
       ),
     );
   }

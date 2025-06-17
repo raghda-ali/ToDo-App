@@ -23,6 +23,7 @@ class RegisterPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 50,
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

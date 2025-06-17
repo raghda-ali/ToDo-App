@@ -18,6 +18,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('To Do App'),
         backgroundColor: Colors.white,
+        elevation:1,
+        automaticallyImplyLeading: false,
         actionsPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         actions: [
           GestureDetector(

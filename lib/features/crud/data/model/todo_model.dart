@@ -2,25 +2,26 @@ import 'package:todo_app/features/crud/domain/entities/todo_entity.dart';
 
 class TodoModel extends TodoEntity {
   TodoModel({
-    required super.createdTime,
-    required super.title,
     required super.id,
+    required super.title,
     required super.description,
+    required super.createdTime,
+    super.userId,
   });
 
-  static TodoModel fromJson(Map<String, dynamic> json) => TodoModel(
+  factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(
     createdTime: json['createdTime'].toDate(),
     title: json['title'],
     description: json['description'],
     id: json['id'],
+    userId: json['userId'],
   );
 
-  @override
   Map<String, dynamic> toJson() => {
     'createdTime': createdTime.toUtc(),
     'title': title,
     'description': description,
     'id': id,
-    'isDone': isDone,
+    'userId': userId,
   };
 }

@@ -92,6 +92,19 @@ This will build the project and install it on your connected device or emulator
 
  DataSources for Firebase integration
 
-#### Screenshots:
-![Main Dashboard](https://link-to-your-image.com/dashboard.png)
+## Screenshots
 
+### Login Page
+![LoginPage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147726.png)
+
+### Register Page
+![RegisterPage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750148049.png)
+
+### Home Page
+![HomePage](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147686.png)
+
+### Add Task Page
+![AddTask](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147699.png)
+
+### Edit Task Page
+![EditTask](https://github.com/raghda-ali/ToDo-App/blob/master/Screenshot_1750147705.png)

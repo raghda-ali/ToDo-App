@@ -7,29 +7,13 @@ class TodoEntity {
   String title;
   String id;
   String description;
-  bool isDone;
+  String? userId;
 
   TodoEntity({
     required this.createdTime,
     required this.title,
     required this.description,
     required this.id,
-    this.isDone = false,
+    this.userId,
   });
-
-  static TodoEntity fromJson(Map<String, dynamic> json) => TodoEntity(
-    createdTime: json['createdTime'].toDate(),
-    title: json['title'],
-    description: json['description'],
-    id: json['id'],
-    isDone: json['isDone'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'createdTime': createdTime.toUtc(),
-    'title': title,
-    'description': description,
-    'id': id,
-    'isDone': isDone,
-  };
 }
