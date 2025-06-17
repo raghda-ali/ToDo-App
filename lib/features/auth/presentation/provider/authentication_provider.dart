@@ -78,5 +78,6 @@ class AuthenticationProvider extends ChangeNotifier {
 
   Future<void> logout() async {
     await logoutUseCase();
+    notifyListeners();
   }
 }

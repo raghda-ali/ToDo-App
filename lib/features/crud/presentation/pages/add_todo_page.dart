@@ -15,6 +15,14 @@ class AddTodoPage extends StatefulWidget {
 class AddTodoPageState extends State<AddTodoPage> {
   final _addFormKey = GlobalKey<FormState>();
   @override
+  void initState() {
+    super.initState();
+    final authProvider = Provider.of<TodosProvider>(context, listen: false);
+    authProvider.addTitleController.clear();
+    authProvider.addDescriptionController.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final toDoProvider = Provider.of<TodosProvider>(context);
     return Scaffold(

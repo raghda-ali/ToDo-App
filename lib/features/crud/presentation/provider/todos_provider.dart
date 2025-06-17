@@ -6,6 +6,13 @@ import 'package:todo_app/features/crud/domain/use_cases/create_todo_usecase.dart
 import 'package:todo_app/features/crud/domain/use_cases/delete_todo_usecase.dart';
 import 'package:todo_app/features/crud/domain/use_cases/read_todo_usecase.dart';
 import 'package:todo_app/features/crud/domain/use_cases/update_todo_usecase.dart';
+enum TodosState {
+  initial,
+  loading,
+  loaded,
+  empty,
+  error,
+}
 
 class TodosProvider extends ChangeNotifier {
   final CreateTodoUseCase createToDoUseCase;
@@ -15,12 +22,15 @@ class TodosProvider extends ChangeNotifier {
 
   List<TodoEntity> _todos = [];
   List<TodoEntity> get todos => _todos;
-  bool isLoading = false;
+  // bool isLoading = false;
   final TodoRepository todoRepository;
   TextEditingController addTitleController = TextEditingController();
   TextEditingController addDescriptionController = TextEditingController();
   bool isAddLoading = false;
   bool isEditLoading = false;
+  bool hasLoadedOnce = false;
+  TodosState _state = TodosState.initial;
+  TodosState get state => _state;
 
   TextEditingController editTitleController = TextEditingController();
   TextEditingController editDescriptionController = TextEditingController();
@@ -33,16 +43,32 @@ class TodosProvider extends ChangeNotifier {
     required this.todoRepository,
   });
 
+  // void loadTodos() {
+  //   _todos.clear();
+  //   if (isLoading) return;
+  //
+  //   isLoading = true;
+  //   notifyListeners();
+  //
+  //   todoRepository.readTodos().listen((todos) {
+  //     _todos = todos;
+  //     isLoading = false;
+  //     notifyListeners();
+  //   });
+  // }
   void loadTodos() {
     _todos.clear();
-    if (isLoading) return;
+    if (_state == TodosState.loading) return;
 
-    isLoading = true;
+    _state = TodosState.loading;
     notifyListeners();
 
     todoRepository.readTodos().listen((todos) {
       _todos = todos;
-      isLoading = false;
+      _state = _todos.isEmpty ? TodosState.empty : TodosState.loaded;
+      notifyListeners();
+    }, onError: (e) {
+      _state = TodosState.error;
       notifyListeners();
     });
   }

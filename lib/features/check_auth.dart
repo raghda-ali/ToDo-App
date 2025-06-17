@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/features/auth/presentation/pages/login_page.dart';
 import 'package:todo_app/features/auth/presentation/pages/register_page.dart';
 import 'crud/presentation/pages/home_page.dart';
 
@@ -23,7 +24,7 @@ class CheckAuth extends StatelessWidget {
               return const HomePage();
             }
 
-            return RegisterPage();
+            return LoginPage();
           },
         );
       },

@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/constants/routers_names.dart';
-import 'package:todo_app/features/crud/presentation/provider/todos_provider.dart';
+import 'package:todo_app/features/auth/presentation/pages/login_page.dart';
 import 'package:todo_app/features/auth/presentation/provider/authentication_provider.dart';
 import 'package:todo_app/features/crud/presentation/widgets/todo_list_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final todosProvider = Provider.of<TodosProvider>(context, listen: false);
-      todosProvider.loadTodos();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +22,16 @@ class _HomePageState extends State<HomePage> {
         actions: [
           GestureDetector(
             onTap: () async {
-              authProvider.logout();
-              if (!context.mounted) return;
+              await authProvider.logout();
+              WidgetsBinding.instance.addPostFrameCallback((_) async {
+                if (!context.mounted) return;
 
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                RoutersNames.loginPage,
-                (route) => false,
-              );
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginPage()),
+                  (route) => false,
+                );
+              });
             },
             child: Text('Logout', style: TextStyle(fontSize: 20)),
           ),

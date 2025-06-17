@@ -7,13 +7,26 @@ import 'package:todo_app/features/auth/presentation/provider/authentication_prov
 import 'package:todo_app/features/auth/presentation/widgets/custom_email_field.dart';
 import 'package:todo_app/features/auth/presentation/widgets/custom_password_field.dart';
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    final authProvider = Provider.of<AuthenticationProvider>(context, listen: false);
+    authProvider.registerEmailController.clear();
+    authProvider.registerPasswordController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthenticationProvider>(context);
-    GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -68,10 +81,9 @@ class RegisterPage extends StatelessWidget {
                         backgroundColor: Colors.red,
                         textColor: Colors.white,
                       );
-                    } else {
+                    }
+                    else {
                       if (!context.mounted) return;
-                      authProvider.registerEmailController.clear();
-                      authProvider.registerPasswordController.clear();
                       Navigator.pushNamed(context, RoutersNames.homePage);
                     }
                   },
