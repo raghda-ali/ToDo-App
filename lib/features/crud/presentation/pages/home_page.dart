@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               if (!context.mounted) return;
 
               Navigator.of(context).pushNamedAndRemoveUntil(
-                RoutersNames.registerPage,
+                RoutersNames.loginPage,
                 (route) => false,
               );
             },
@@ -34,20 +34,13 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body:
-          // todos.isEmpty
-          //     ? const Center(child: Text("No tasks found."))
-          //     : toDoProvider.isLoaded == false
-          //     ? Center(child: CircularProgressIndicator(color: Colors.black))
-          //     :
-          TodoListWidget(todos: todos),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, RoutersNames.addToDoPage);
         },
         child: const Icon(Icons.add),
       ),
+      body: TodoListWidget(todos: todos),
     );
   }
 }

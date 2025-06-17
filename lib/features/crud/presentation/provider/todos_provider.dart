@@ -33,22 +33,11 @@ class TodosProvider extends ChangeNotifier {
     required this.deleteToDoUseCase,
     required this.todoRepository,
   });
-  // void loadTodos() {
-  //   if (isLoading) return;
-  //   isLoading = true;
-  //
-  //   todoRepository.readTodos().listen((todos) {
-  //     _todos = todos;
-  //     isInitialized = true;
-  //     notifyListeners();
-  //   });
-  // }
+
   void loadTodos() {
     if (isLoading || isInitialized) return;
-
     isLoading = true;
     notifyListeners();
-
     todoRepository.readTodos().listen((todos) {
       _todos = todos;
       isInitialized = true;

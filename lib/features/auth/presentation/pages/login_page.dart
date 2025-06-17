@@ -17,17 +17,11 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        toolbarHeight: 50,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   toolbarHeight: 50,
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -86,6 +80,26 @@ class LoginPage extends StatelessWidget {
                             "Login",
                             style: TextStyle(color: Colors.white),
                           ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  spacing: 5,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Not a member ?'),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutersNames.registerPage);
+                      },
+                      child: Text(
+                        'SignUp now',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
