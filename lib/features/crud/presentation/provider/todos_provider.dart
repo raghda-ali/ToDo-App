@@ -22,7 +22,6 @@ class TodosProvider extends ChangeNotifier {
 
   List<TodoEntity> _todos = [];
   List<TodoEntity> get todos => _todos;
-  // bool isLoading = false;
   final TodoRepository todoRepository;
   TextEditingController addTitleController = TextEditingController();
   TextEditingController addDescriptionController = TextEditingController();
